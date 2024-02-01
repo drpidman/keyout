@@ -4,10 +4,7 @@ $idsala = $_GET["sala"];
 $stmt = $pdo->prepare("SELECT * FROM reservas WHERE idsala = :idsala AND atualizadoEm IS NULL");
 $stmt->bindParam(":idsala", $idsala);
 $stmt->execute();
-
 $reserva = $stmt->fetch(PDO::FETCH_OBJ);
-
-echo json_encode($reserva);
 
 ?>
 <div class="modal d-block background-ofuscate position-fixed" tabindex="-1" id="m-modal">
