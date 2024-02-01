@@ -1,12 +1,19 @@
-@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
+@font-face {
+    font-family: 'Varela Round';
+    src: url("/assets/fonts/Varela_Round/VarelaRound-Regular.ttf");
+}
 
+@font-face {
+    font-family: 'Roboto Regular';
+    src: url("/assets/fonts/Roboto/Roboto-Regular.ttf");
+}
 
 body {
     background-color: #ffffff;
 }
 
 * {
-    font-family: 'Varela Round', sans-serif;
+    font-family: 'Varela Round', 'Roboto Regular';
 }
 
 .form-floating-h1 {
