@@ -36,7 +36,7 @@ $stmt->execute();
           </a>
         <?php } else { ?>
           <a href="reserva?action=confirm&sala=<?php echo $usuario["idsala"] ?>" class="card d-flex justify-content-between align-items-center p-5 mb-3 rounded text-decoration-none bg-danger-subtle">
-            <div class="p-3 text-body">
+            <div class="p-3 text-body fs-4">
               <?php echo $usuario['nome'] ?>
             </div>
           </a>
