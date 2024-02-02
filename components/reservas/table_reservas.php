@@ -37,23 +37,20 @@ $stmt->execute();
     </section>
   </div>
 
-  <?php if ($stmt->rowCount() > 0) : ?>
+  <?php if ($stmt->rowCount()) : ?>
     <div class="d-flex flex-column gap-3 mt-5">
       <?php while ($reserva = $stmt->fetch(PDO::FETCH_ASSOC)) : ?>
         <div class="d-flex p-3 border rounded mb-3
-      <?php
-        if (!$reserva["atualizadoEm"]) {
-          echo "bg-warning bg-opacity-50";
-        } else {
-          echo "bg-info bg-opacity-50";
-        }
-      ?>">
+      <?php if (!$reserva["atualizadoEm"]) : ?>
+        bg-warning bg-opacity-50
+      <?php else : ?>
+        bg-info bg-opacity-50
+      <?php endif; ?> ">
           <div class="p-2 d-flex gap-3 flex-column">
             <h1>
               <i class="ri-key-2-line"></i>
               Reserva n° <?= $reserva["idreserva"] ?>
             </h1>
-
             <section class="ms-1">
               <div class="mb-2">
                 <h5>
@@ -90,12 +87,12 @@ $stmt->execute();
                 <i class="ri-calendar-line"></i>
                 Data devolução:
                 <span>
-                  <?php
-                  if ($reserva["atualizadoEm"]) : echo date("d/m/Y H:i", strtotime($reserva["atualizadoEm"])); ?>
+                  <?php if ($reserva["atualizadoEm"]) : echo date("d/m/Y H:i", strtotime($reserva["atualizadoEm"])); ?>
                   <?php else : ?>
-                    <i class="ri-error-warning-line"></i> Pendente
+                    <i class="ri-error-warning-line"></i>
+                    Pendente
                   <?php endif ?>
-                </span> 
+                </span>
               </div>
               <div>
                 <?php if (!$reserva["atualizadoEm"]) : ?>

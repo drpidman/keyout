@@ -14,12 +14,12 @@ if (isset($_GET["sala"])) {
 <section class="container mt-5">
   <div class="mb-3">
     <a href="
-    <?php 
-      if ($sala_from_home) {
-        echo "/";
-      } else { 
-        echo "/reservas";
-      } ?> " class="btn btn-success">
+    <?php if ($sala_from_home) : ?>
+      /
+    <?php else : ?>
+      /reservas
+    <?php endif; ?>"
+    class="btn btn-success">
       <i class="ri-arrow-left-wide-line"></i>
       Voltar
     </a>
@@ -46,21 +46,19 @@ if (isset($_GET["sala"])) {
           <label class="form-label">Salas <span class="text-danger">*</span></label>
           <select class="form-select" aria-label="Seletor de salas" aria-describedby="select_salas_help" name="select_sala" required>
             <option 
-            <?php if (!$sala_from_home) { echo "selected"; } ?> value="0">Nenhuma sala selecionada</option>
+            <?php if (!$sala_from_home) echo "selected"; ?> value="0">Nenhuma sala selecionada</option>
             <?php
             # seleção de salas disponiveis para reserva
-            while ($usuario = $query_salas->fetch(PDO::FETCH_ASSOC)) { ?>
+            while ($usuario = $query_salas->fetch(PDO::FETCH_ASSOC)) : ?>
               <option value="<?php echo $usuario["idsala"] ?>"
               <?php
               # verificar se a sala foi selecionada pela pagina "home", se sim, selecionar a opção marcada
               # caso não, apenas deixar como seleção padrão "Nenhuma sala foi selecionada"
-              if ($sala_from_home && $usuario["idsala"] == $sala_from_home["idsala"]) { echo "selected"; }?>
+              if ($sala_from_home && $usuario["idsala"] == $sala_from_home["idsala"]) echo "selected"; ?>
               >
               <?php echo $usuario["nome"]?>
               </option>
-            <?php
-            }
-            ?>
+            <?php endwhile ?>
           </select>
           <div id="select_salas_help" class="form-text">Selecione uma sala para reservar. <br> Apenas salas não reservadas são mostradas</div>
         </div>

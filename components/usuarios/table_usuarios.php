@@ -1,6 +1,6 @@
 <?php
-$stmt_reserva = $pdo->prepare("SELECT * FROM usuarios");
-$stmt_reserva->execute();
+$stmt_usuarios = $pdo->prepare("SELECT * FROM usuarios");
+$stmt_usuarios->execute();
 ?>
 <section class="container mt-3 mb-3">
   <div class="mb-3">
@@ -10,13 +10,9 @@ $stmt_reserva->execute();
     </a>
   </div>
   <h1> <i class="ri-user-line"></i> Usuários</h1>
-  <?php
-  if ($stmt_reserva->rowCount() > 0) :
-  ?>
+  <?php if ($stmt_usuarios->rowCount()) : ?>
     <div class="d-flex flex-column gap-3 mt-4">
-      <?php
-      while ($usuario = $stmt_reserva->fetch(PDO::FETCH_ASSOC)) :
-      ?>
+      <?php while ($usuario = $stmt_usuarios->fetch(PDO::FETCH_ASSOC)) : ?>
         <div class="d-flex justify-content-between align-items-center p-3 border rounded">
           <div class="p-2 d-flex flex-column align-items-start">
             <h2>

@@ -14,33 +14,34 @@ $stmt->execute();
     <p class="fs-5 mt-3">Salas reservadas/não reservadas </p>
   </div>
 
-
   <?php
   # Mostrar uma mensagem caso a quantia de salas
   # for menor que 0, nesse caso, verificamos se 
   # a contagem de linhas é maior do que zero, caso a condição
   # seja verdadeira, exiba a lista
-  if ($stmt->rowCount() > 0) :
+  if ($stmt->rowCount()) :
   ?>
     <div class="col flex-wrap gap-3">
       <?php
       # Percorrer todos os itens da matriz
       # Verificar se a sala esta reservada com if(!$sala['reservado']) ? NAO RESERVADO(TRUE) : RESERVADO(FALSE)
-      while ($usuario = $stmt->fetch(PDO::FETCH_ASSOC)) :
-      ?>
-        <?php if (!$usuario['reservado']) : ?>
-          <a href="/reservas?nova-reserva=new&sala=<?= $usuario['idsala'] ?>" class="card justify-content-between align-items-center p-5 mb-3 rounded text-decoration-none bg-success-subtle">
-            <div class="p-3 text-body fs-4">
-              <?= $usuario['nome'] ?>
-            </div>
-          </a>
+      while ($salas = $stmt->fetch(PDO::FETCH_ASSOC)) : ?>
+        <a 
+        href="
+        <?php if (!$salas['reservado']) : ?>
+          /reservas?nova-reserva=new&sala=<?= $salas['idsala']?>
         <?php else : ?>
-          <a href="reserva?action=confirm&sala=<?= $usuario["idsala"] ?>" class="card d-flex justify-content-between align-items-center p-5 mb-3 rounded text-decoration-none bg-danger-subtle">
-            <div class="p-3 text-body fs-4">
-              <?= $usuario['nome'] ?>
-            </div>
-          </a>
-        <?php endif ?>
+          /reserva?action=confirm&sala=<?= $salas['idsala'] ?>
+        <?php endif ?>"
+
+        class="card justify-content-between align-items-center p-5 mb-3 fs-4 rounded text-decoration-none 
+        <?php if (!$salas['reservado']) : ?>
+            bg-success-subtle
+        <?php else : ?>
+            bg-danger-subtle
+        <?php endif ?>">
+        <?= $salas['nome'] ?>
+        </a>
       <?php endwhile ?>
     </div>
   <?php else : ?>

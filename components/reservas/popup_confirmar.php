@@ -22,8 +22,8 @@ $stmt->execute();
                         <button class="btn btn-success" type="submit">Buscar salas</button>
                     </div>
                 </form>
-            <?php endif;
-            if (isset($_GET["method"]) && $_GET["method"] == "change_status") :
+            <?php endif; ?>
+            <?php if (isset($_GET["method"]) && $_GET["method"] == "change_status") :
                 $user_id = $_GET["user_id"];
 
                 $query_reservas = $pdo->prepare(
@@ -38,7 +38,7 @@ $stmt->execute();
             ?>
                 <?php if ($query_reservas->rowCount()) : ?>
                     <form class="modal-body" action="/reservas/actions.php?action=confirm&redirect=/reservas" method="POST">
-                        <input type="hidden" value="<?php echo $user_id ?>" name="user_id">
+                        <input type="hidden" value="<?= $user_id ?>" name="user_id">
                         <select class="form-select" aria-label="Sala selector" id="select_sala" name="select_sala" required>
                             <option selected>Selecione uma sala</option>
                             <?php while ($usuario = $query_reservas->fetch(PDO::FETCH_ASSOC)) : ?>
@@ -60,8 +60,8 @@ $stmt->execute();
                         <a href="/reservas" class="btn btn-success">Fechar</a>
                     </div>
                 <?php endif ?>
-            <?php endif;
-            if (isset($_GET["method"]) && $_GET["method"] == "confirm") :
+            <?php endif; ?>
+            <?php if (isset($_GET["method"]) && $_GET["method"] == "confirm") :
                 $reserva_id = $_GET["reserva"];
                 $query_reservas = $pdo->prepare(
                     "SELECT * FROM reservas WHERE idreserva = :idreserva"

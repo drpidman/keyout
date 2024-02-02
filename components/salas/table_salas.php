@@ -11,12 +11,10 @@ $stmt->execute();
   </div>
   <h1><i class="ri-home-line"></i> Salas</h1>
   <?php
-  if ($stmt->rowCount() > 0) :
+  if ($stmt->rowCount()) :
   ?>
     <div class="d-flex flex-column gap-3 mt-4">
-      <?php
-      while ($usuario = $stmt->fetch(PDO::FETCH_ASSOC)) :
-      ?>
+      <?php while ($usuario = $stmt->fetch(PDO::FETCH_ASSOC)) : ?>
         <div class="d-flex justify-content-between align-items-center p-3 border rounded">
           <div class="">
             <?= $usuario['nome'] ?>
