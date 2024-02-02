@@ -37,10 +37,9 @@ $stmt->execute();
     </section>
   </div>
 
-
-  <?php if ($stmt->rowCount() > 0) { ?>
+  <?php if ($stmt->rowCount() > 0) : ?>
     <div class="d-flex flex-column gap-3 mt-5">
-      <?php while ($reserva = $stmt->fetch(PDO::FETCH_ASSOC)) { ?>
+      <?php while ($reserva = $stmt->fetch(PDO::FETCH_ASSOC)) : ?>
         <div class="d-flex p-3 border rounded mb-3
       <?php
         if (!$reserva["atualizadoEm"]) {
@@ -52,30 +51,30 @@ $stmt->execute();
           <div class="p-2 d-flex gap-3 flex-column">
             <h1>
               <i class="ri-key-2-line"></i>
-              Reserva n° <?php echo $reserva["idreserva"] ?>
+              Reserva n° <?= $reserva["idreserva"] ?>
             </h1>
 
             <section class="ms-1">
               <div class="mb-2">
                 <h5>
                   <i class="ri-user-line"></i>
-                  <?php echo $reserva["username"] ?>
+                  <?= $reserva["username"] ?>
                 </h5>
                 <span class="fs-6 ps-3 ms-2 border-start border-dark">
                   <i class="ri-pass-valid-line"></i>
-                  <?php echo $reserva["nregistro"] ?>
+                  <?= $reserva["nregistro"] ?>
                 </span>
               </div>
               <div>
                 <span class="fs-6">
                   <i class="ri-home-line"></i>
-                  <?php echo $reserva["roomname"] ?>
+                  <?= $reserva["roomname"] ?>
                 </span>
               </div>
               <div>
                 <span class="fs-6">
                   <i class="ri-time-line"></i>
-                  <?php echo $reserva["periodo"] ?>
+                  <?= $reserva["periodo"] ?>
                 </span>
               </div>
             </section>
@@ -84,10 +83,7 @@ $stmt->execute();
                 <i class="ri-calendar-line"></i>
                 Data retirada:
                 <span>
-                  <?php
-                  $dataFormatada = date("d/m/Y H:i", strtotime($reserva["criadoEm"]));
-                  echo $dataFormatada;
-                  ?>
+                  <?= date("d/m/Y H:i", strtotime($reserva["criadoEm"])); ?>
                 </span>
               </div>
               <div class="mb-3">
@@ -95,25 +91,22 @@ $stmt->execute();
                 Data devolução:
                 <span>
                   <?php
-                  if ($reserva["atualizadoEm"]) {
-                    $dataFormatada = date("d/m/Y H:i", strtotime($reserva["atualizadoEm"]));
-                    echo $dataFormatada;
-                  ?>
-                  <?php } else { ?>
+                  if ($reserva["atualizadoEm"]) : echo date("d/m/Y H:i", strtotime($reserva["atualizadoEm"])); ?>
+                  <?php else : ?>
                     <i class="ri-error-warning-line"></i> Pendente
-                  <?php } ?>
-                </span>
+                  <?php endif ?>
+                </span> 
               </div>
               <div>
-                <?php if (!$reserva["atualizadoEm"]) { ?>
-                  <a href="?action=confirmar&method=confirm&reserva=<?php echo $reserva["idreserva"] ?>" class="btn btn-warning">Concluir</a>
-                <?php } ?>
+                <?php if (!$reserva["atualizadoEm"]) : ?>
+                  <a href="?action=confirmar&method=confirm&reserva=<?= $reserva["idreserva"] ?>" class="btn btn-warning">Concluir</a>
+                <?php endif ?>
               </div>
             </section>
           </div>
         </div>
-      <?php } ?>
-    <?php } else { ?>
+      <?php endwhile ?>
+    <?php else : ?>
       <div class="mb-3 border rounded p-3 mt-5">
         <h1>Nenhuma reserva foi criada</h1>
         <p class="text-gray">Para poder visualizar as reservas, por favor, adicione uma no botão "+ Nova reserva" ou clique aqui:
@@ -123,6 +116,6 @@ $stmt->execute();
           </a>
         </p>
       </div>
-    <?php } ?>
+    <?php endif ?>
     </div>
 </section>

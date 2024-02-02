@@ -15,8 +15,8 @@ $reserva = $stmt->fetch(PDO::FETCH_OBJ);
                 <a type="button" class="btn-close" href="/"></a>
             </div>
             <form class="modal-body" action="/reservas/actions.php?action=confirm&redirect=/" method="POST">
-                <input type="hidden" value="<?php echo $reserva->idusuario ?>" name="user_id">
-                <input type="hidden" value="<?php echo $reserva->idsala ?>" name="select_sala">
+                <input type="hidden" value="<?= $reserva->idusuario ?>" name="user_id">
+                <input type="hidden" value="<?= $reserva->idsala ?>" name="select_sala">
                 <p>Para confirmar, apenas pressione o botão abaixo</p>
                 <button class="btn btn-success" type="submit">Confirmar</button>
             </form>

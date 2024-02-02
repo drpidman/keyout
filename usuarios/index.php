@@ -19,9 +19,9 @@ include "../config.php";
     <div class="container-fluid mt-3">
         <h1>Controle de Usuarios</h1>
         <hr>
-        <?php if (isset($_GET["action"]) && $_GET["action"] == "delete-user") {
+        <?php if (isset($_GET["action"]) && $_GET["action"] == "delete-user")
             include_once "../components/usuarios/popup_delete_confirmar.php";
-        } ?>
+        ?>
 
         <?php if (
             isset($_GET['novo-usuario']) && $_GET['novo-usuario'] == "new"

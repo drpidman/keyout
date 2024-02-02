@@ -16,7 +16,7 @@ if ($_GET['novo-usuario'] == "edit") {
     </a>
   </div>
 
-  <form class="rounded border p-3 mt-5" method="POST" action="/usuarios/actions.php?action=<?php echo $action ?>">
+  <form class="rounded border p-3 mt-5" method="POST" action="/usuarios/actions.php?action=<?= $action ?>">
     <div class="mb-3">
       <h1 class="form-floating-h1 border-start border-end">
         <i class="ri-survey-line"></i>
@@ -37,21 +37,21 @@ if ($_GET['novo-usuario'] == "edit") {
         }
 
         $usuario = $stmt->fetch(PDO::FETCH_OBJ);
-        if ($usuario) {
+        if ($usuario) :
         ?>
         <!-- SECTION PARA EDITAR O USUARIO -->
-          <input type="hidden" value="<?php echo $usuario->idusuario ?>" name="id">
+          <input type="hidden" value="<?= $usuario->idusuario ?>" name="id">
           <div class="col-sm-6">
             <label class="form-label">Nome completo</label>
-            <input name="nome_usuario" type="text" class="form-control" id="nomeinput" aria-describedby="nomehelp" value="<?php echo $usuario->nome ?>" required>
+            <input name="nome_usuario" type="text" class="form-control" id="nomeinput" aria-describedby="nomehelp" value="<?= $usuario->nome ?>" required>
             <div id="nomehelp" class="form-text">Nome para identificação</div>
           </div>
           <div class="col-sm-6">
             <label class="form-label">N. de registro</label>
-            <input name="nd_registro" type="text" class="form-control" id="nregistroinput" aria-describedby="nregistrohelp" value="<?php echo $usuario->nregistro ?>" required>
+            <input name="nd_registro" type="text" class="form-control" id="nregistroinput" aria-describedby="nregistrohelp" value="<?= $usuario->nregistro ?>" required>
             <div id="nregistrohelp" class="form-text">N. de registro, usado para identificação e para reservas</div>
           </div>
-        <?php } else { ?>
+        <?php else : ?>
         <!-- SECTION PARA CRIAR UM NOVO USUARIO -->
           <div class="col-sm-6 mt-sm-3 col-md-5">
             <label class="form-label">Nome completo</label>
@@ -63,19 +63,19 @@ if ($_GET['novo-usuario'] == "edit") {
             <input name="nd_registro" type="text" class="form-control" id="nregistroinput" aria-describedby="nregistrohelp" required>
             <div id="nregistrohelp" class="form-text">N. de registro, usado para identificação e para reservas</div>
           </div>
-        <?php } ?>
+        <?php endif ?>
       </section>
     </div>
-    <?php if ($action == "edit") { ?>
+    <?php if ($action == "edit") : ?>
       <button type="submit" class="btn btn-success">
         <i class="ri-user-add-line"></i>
         Confirmar
       </button>
-    <?php } else { ?>
+    <?php else : ?>
       <button type="submit" class="btn btn-primary">
         <i class="ri-user-add-line"></i>
         Adicionar
       </button>
-    <?php } ?>
+    <?php endif ?>
   </form>
 </section>

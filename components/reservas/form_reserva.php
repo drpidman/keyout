@@ -17,7 +17,7 @@ if (isset($_GET["sala"])) {
     <?php 
       if ($sala_from_home) {
         echo "/";
-      } else {
+      } else { 
         echo "/reservas";
       } ?> " class="btn btn-success">
       <i class="ri-arrow-left-wide-line"></i>
@@ -66,9 +66,9 @@ if (isset($_GET["sala"])) {
         </div>
         <!-- END DIV SELECT SALAS -->
       </section>
-      <?php if (isset($_GET["erro"]) && $_GET["erro"] == "empty_periodo" || isset($_GET["erro"]) && $_GET["erro"] == "empty_sala") { ?>
+      <?php if (isset($_GET["erro"]) && $_GET["erro"] == "empty_periodo" || isset($_GET["erro"]) && $_GET["erro"] == "empty_sala") : ?>
         <span class="text-danger">Por favor, preencha todos os campos necessários</span>
-      <?php } ?>
+      <?php endif ?>
     </div>
     <button type="submit" class="btn btn-primary">Reservar</button>
   </form>

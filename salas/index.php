@@ -20,9 +20,9 @@ include "../config.php";
         <h1>Controle de Salas</h1>
         <hr>
 
-        <?php if (isset($_GET["action"]) && $_GET["action"] == "delete-sala") {
+        <?php if (isset($_GET["action"]) && $_GET["action"] == "delete-sala")
             include_once "../components/salas/popup_delete_confirmar.php";
-        } ?>
+        ?>
 
         <?php
         if (

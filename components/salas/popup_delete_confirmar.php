@@ -19,7 +19,7 @@ $sala = $stmt->fetch(PDO::FETCH_OBJ);
                 <a type="button" class="btn-close" href="/salas"></a>
             </div>
             <form class="modal-body" action="/salas/actions.php?action=delete" method="POST">
-                <input type="hidden" value="<?php echo $sala->idsala ?>" name="idsala">
+                <input type="hidden" value="<?= $sala->idsala ?>" name="idsala">
                 <p>Deletar a sala apagará todos os registros de reservas
                     relacionados a mesma.
                 </p>

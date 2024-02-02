@@ -11,24 +11,24 @@ $stmt->execute();
   </div>
   <h1><i class="ri-home-line"></i> Salas</h1>
   <?php
-  if ($stmt->rowCount() > 0) {
+  if ($stmt->rowCount() > 0) :
   ?>
     <div class="d-flex flex-column gap-3 mt-4">
       <?php
-      while ($usuario = $stmt->fetch(PDO::FETCH_ASSOC)) {
+      while ($usuario = $stmt->fetch(PDO::FETCH_ASSOC)) :
       ?>
         <div class="d-flex justify-content-between align-items-center p-3 border rounded">
           <div class="">
-            <?php echo $usuario['nome'] ?>
+            <?= $usuario['nome'] ?>
           </div>
           <div>
-            <a href="/salas?nova-sala=edit&id=<?php echo $usuario['idsala'] ?>" class="btn fs-4 rounded"><i class="ri-pencil-line"></i></a>
-            <a href="/salas?action=delete-sala&id=<?php echo $usuario['idsala'] ?>" class="btn fs-4 rounded"><i class="ri-delete-bin-2-line"></i></a>
+            <a href="/salas?nova-sala=edit&id=<?= $usuario['idsala'] ?>" class="btn fs-4 rounded"><i class="ri-pencil-line"></i></a>
+            <a href="/salas?action=delete-sala&id=<?= $usuario['idsala'] ?>" class="btn fs-4 rounded"><i class="ri-delete-bin-2-line"></i></a>
           </div>
         </div>
-      <?php } ?>
+      <?php endwhile ?>
     </div>
-  <?php } else { ?>
+  <?php else : ?>
     <div class="mb-3 border rounded p-3">
       <h1>Nenhuma sala foi adicionada</h1>
       <p class="text-gray">Para poder visualizar as salas, por favor, adicione uma no botão "+ Nova sala" ou clique aqui:
@@ -38,5 +38,5 @@ $stmt->execute();
         </a>
       </p>
     </div>
-  <?php } ?>
+  <?php endif ?>
 </section>

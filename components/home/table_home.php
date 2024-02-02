@@ -20,30 +20,30 @@ $stmt->execute();
   # for menor que 0, nesse caso, verificamos se 
   # a contagem de linhas é maior do que zero, caso a condição
   # seja verdadeira, exiba a lista
-  if ($stmt->rowCount() > 0) {
+  if ($stmt->rowCount() > 0) :
   ?>
     <div class="col flex-wrap gap-3">
       <?php
       # Percorrer todos os itens da matriz
       # Verificar se a sala esta reservada com if(!$sala['reservado']) ? NAO RESERVADO(TRUE) : RESERVADO(FALSE)
-      while ($usuario = $stmt->fetch(PDO::FETCH_ASSOC)) {
+      while ($usuario = $stmt->fetch(PDO::FETCH_ASSOC)) :
       ?>
-        <?php if (!$usuario['reservado']) { ?>
-          <a href="/reservas?nova-reserva=new&sala=<?php echo $usuario['idsala'] ?>" class="card justify-content-between align-items-center p-5 mb-3 rounded text-decoration-none bg-success-subtle">
+        <?php if (!$usuario['reservado']) : ?>
+          <a href="/reservas?nova-reserva=new&sala=<?= $usuario['idsala'] ?>" class="card justify-content-between align-items-center p-5 mb-3 rounded text-decoration-none bg-success-subtle">
             <div class="p-3 text-body fs-4">
-              <?php echo $usuario['nome'] ?>
+              <?= $usuario['nome'] ?>
             </div>
           </a>
-        <?php } else { ?>
-          <a href="reserva?action=confirm&sala=<?php echo $usuario["idsala"] ?>" class="card d-flex justify-content-between align-items-center p-5 mb-3 rounded text-decoration-none bg-danger-subtle">
+        <?php else : ?>
+          <a href="reserva?action=confirm&sala=<?= $usuario["idsala"] ?>" class="card d-flex justify-content-between align-items-center p-5 mb-3 rounded text-decoration-none bg-danger-subtle">
             <div class="p-3 text-body fs-4">
-              <?php echo $usuario['nome'] ?>
+              <?= $usuario['nome'] ?>
             </div>
           </a>
-        <?php } ?>
-      <?php } ?>
+        <?php endif ?>
+      <?php endwhile ?>
     </div>
-  <?php } else { ?>
+  <?php else : ?>
     <div class="mb-3 border rounded p-3">
       <h1>Nenhuma sala foi adicionada</h1>
       <p class="text-gray">Para poder visualizar as salas, por favor, adicione uma no botão "+ Nova sala" ou clique aqui:
@@ -53,5 +53,5 @@ $stmt->execute();
         </a>
       </p>
     </div>
-  <?php } ?>
+  <?php endif ?>
 </section>

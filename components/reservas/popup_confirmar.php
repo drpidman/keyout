@@ -9,7 +9,7 @@ $stmt->execute();
                 <h5 class="modal-title">Confirmar devolução</h5>
                 <a type="button" class="btn-close" href="/reservas"></a>
             </div>
-            <?php if (isset($_GET["method"]) && $_GET["method"] == "search") { ?>
+            <?php if (isset($_GET["method"]) && $_GET["method"] == "search") : ?>
                 <form class="modal-body" action="/reservas/actions.php?action=get_reserved" method="POST">
                     <div class="mb-3">
                         <label for="input_nregistro" class="form-label">Numero de registro</label>
@@ -22,8 +22,8 @@ $stmt->execute();
                         <button class="btn btn-success" type="submit">Buscar salas</button>
                     </div>
                 </form>
-            <?php }
-            if (isset($_GET["method"]) && $_GET["method"] == "change_status") {
+            <?php endif;
+            if (isset($_GET["method"]) && $_GET["method"] == "change_status") :
                 $user_id = $_GET["user_id"];
 
                 $query_reservas = $pdo->prepare(
@@ -36,14 +36,14 @@ $stmt->execute();
                 $query_reservas->bindParam(":idusuario", $user_id);
                 $query_reservas->execute();
             ?>
-                <?php if ($query_reservas->rowCount()) { ?>
+                <?php if ($query_reservas->rowCount()) : ?>
                     <form class="modal-body" action="/reservas/actions.php?action=confirm&redirect=/reservas" method="POST">
                         <input type="hidden" value="<?php echo $user_id ?>" name="user_id">
                         <select class="form-select" aria-label="Sala selector" id="select_sala" name="select_sala" required>
                             <option selected>Selecione uma sala</option>
-                            <?php while ($usuario = $query_reservas->fetch(PDO::FETCH_ASSOC)) { ?>
-                                <option value="<?php echo $usuario["idsala"] ?>"><?php echo $usuario["roomname"] ?></option>
-                            <?php } ?>
+                            <?php while ($usuario = $query_reservas->fetch(PDO::FETCH_ASSOC)) : ?>
+                                <option value="<?= $usuario["idsala"] ?>"><?= $usuario["roomname"] ?></option>
+                            <?php endwhile ?>
                         </select>
                         <div id="select_sala" class="form-text mb-3 mt-3">
                             Selecione a sala que deseja confirmar a devolução
@@ -52,16 +52,16 @@ $stmt->execute();
                             <button class="btn btn-success" type="submit">Confirmar</button>
                         </div>
                     </form>
-                <?php } else { ?>
+                <?php else : ?>
                     <div class="modal-body">
                         <p>Nenhuma sala reservada foi econtrada para o seu usuário</p>
                     </div>
                     <div class="modal-footer">
                         <a href="/reservas" class="btn btn-success">Fechar</a>
                     </div>
-                <?php } ?>
-            <?php }
-            if (isset($_GET["method"]) && $_GET["method"] == "confirm") {
+                <?php endif ?>
+            <?php endif;
+            if (isset($_GET["method"]) && $_GET["method"] == "confirm") :
                 $reserva_id = $_GET["reserva"];
                 $query_reservas = $pdo->prepare(
                     "SELECT * FROM reservas WHERE idreserva = :idreserva"
@@ -71,8 +71,8 @@ $stmt->execute();
                 $reserva = $query_reservas->fetch(PDO::FETCH_OBJ);
             ?>
                 <form class="modal-body" action="/reservas/actions.php?action=confirm&redirect=/reservas" method="POST">
-                    <input type="hidden" value="<?php echo $reserva->idusuario ?>" name="user_id">
-                    <input type="hidden" value="<?php echo $reserva->idsala ?>" name="select_sala">
+                    <input type="hidden" value="<?= $reserva->idusuario ?>" name="user_id">
+                    <input type="hidden" value="<?= $reserva->idsala ?>" name="select_sala">
                     <div class="mb-3">
                         <p>Deseja confirmar a devolução?</p>
                     </div>
@@ -80,7 +80,7 @@ $stmt->execute();
                         <button class="btn btn-success" type="submit">Confirmar</button>
                     </div>
                 </form>
-            <?php } ?>
+            <?php endif ?>
         </div>
     </div>
 </div>
