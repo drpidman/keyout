@@ -19,7 +19,7 @@ if (isset($_GET["sala"])) {
     <?php else : ?>
       <?= baseRedirect("reservas") ?>
     <?php endif; ?>"
-    class="btn btn-success">
+    class="btn btn-primary">
       <i class="ri-arrow-left-wide-line"></i>
       Voltar
     </a>

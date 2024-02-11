@@ -22,7 +22,7 @@ include "../utils.php";
         <?php include_once "../components/mobileview/table_mobilevew.php" ?>
     </div>
     
-    <?php include_once "../components/mobileview/footer.php" ?>
+    <?php include_once "../components/footer.php" ?>
 
     <script src="../assets/js/bootstrap.bundle.min.js"></script>
 </body>

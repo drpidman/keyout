@@ -29,11 +29,14 @@ include "../utils.php";
         if (
             isset($_GET['nova-sala']) && $_GET['nova-sala'] == "new"
             || isset($_GET['nova-sala']) && $_GET['nova-sala'] == "edit"
-        ) include_once "../components/salas/form_sala.php";
+        )
+            include_once "../components/salas/form_sala.php";
         ?>
-        <?php if (!isset($_GET['nova-sala'])) include_once "../components/salas/table_salas.php" ?>
-    </div>
+        <?php if (!isset($_GET['nova-sala']))
+            include_once "../components/salas/table_salas.php" ?>
+        </div>
 
+    <?php include_once "../components/footer.php" ?>
     <script src="../assets/js/bootstrap.bundle.min.js"></script>
 </body>
 

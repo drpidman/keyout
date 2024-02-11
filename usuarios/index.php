@@ -27,10 +27,13 @@ include "../utils.php";
         <?php if (
             isset($_GET['novo-usuario']) && $_GET['novo-usuario'] == "new"
             || isset($_GET["novo-usuario"]) && $_GET["novo-usuario"] == "edit"
-        ) include_once "../components/usuarios/form_usuario.php"; ?>
-        <?php if (!isset($_GET['novo-usuario']))  include_once "../components/usuarios/table_usuarios.php" ?>
-    </div>
+        )
+            include_once "../components/usuarios/form_usuario.php"; ?>
+        <?php if (!isset($_GET['novo-usuario']))
+            include_once "../components/usuarios/table_usuarios.php" ?>
+        </div>
 
+    <?php include_once "../components/footer.php" ?>
     <script src="../assets/js/bootstrap.bundle.min.js"></script>
 </body>
 

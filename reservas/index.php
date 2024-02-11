@@ -31,7 +31,8 @@ include "../utils.php";
         <?php if (!isset($_GET["nova-reserva"]))
             include_once "../components/reservas/table_reservas.php" ?>
     </div>
-
+    
+    <?php include_once "../components/footer.php" ?>
     <script src="../assets/js/bootstrap.bundle.min.js"></script>
 </body>
 

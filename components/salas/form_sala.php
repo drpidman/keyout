@@ -10,7 +10,7 @@ if ($_GET['nova-sala'] == "edit") {
 
 <section class="container mt-5">
   <div class="mb-3">
-    <a href="<?= baseRedirect("salas") ?>" class="btn btn-success">
+    <a href="<?= baseRedirect("salas") ?>" class="btn btn-primary">
       <i class="ri-arrow-left-wide-line"></i>
       Voltar
     </a>
