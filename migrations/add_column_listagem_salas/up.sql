@@ -1,0 +1,1 @@
+ALTER TABLE salas ADD listagem ENUM('ativa', 'excluida') NOT NULL DEFAULT 'ativa';
