@@ -16,12 +16,13 @@ include "../utils.php";
 </head>
 
 <body>
-    <?php if (isset($_GET["erro"])) include_once "../components/mobileview/popup_error.php" ?>
-    
-    <div class="container">
+    <?php if (isset($_GET["erro"]))
+        include_once "../components/mobileview/popup_error.php" ?>
+
+        <div class="container">
         <?php include_once "../components/mobileview/table_mobilevew.php" ?>
     </div>
-    
+
     <?php include_once "../components/footer.php" ?>
 
     <script src="../assets/js/bootstrap.bundle.min.js"></script>

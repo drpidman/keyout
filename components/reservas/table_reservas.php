@@ -44,43 +44,12 @@ $stmt->execute();
 
   <?php if ($stmt->rowCount()): ?>
     <div class="d-flex flex-column gap-3 mt-5">
-      <?php while ($reserva = $stmt->fetch(PDO::FETCH_ASSOC)): ?>
-        <div class="card w-100 <?= $reserva["atualizadoEm"] ? "bg-primary bg-opacity-10" : "bg-warning bg-opacity-50" ?>"
-          style="width: 18rem;">
-          <div class="card-header">
-            <h4 class=" m-0">Reserva nº
-              <?= $reserva["idreserva"] ?>
-            </h4>
-            <p class="card-subtitle text-muted m-0">
-              <?= $reserva["atualizadoEm"] ?
-                "Devolvido: " . date("d/m H:i", strtotime($reserva["atualizadoEm"]))
-                : "Pendente: " . date("d/m H:i", strtotime($reserva["criadoEm"]))
-                ?>
-            </p>
-          </div>
-          <div class="card-body">
-            <div class="card-text">
-              <blockquote class="blockquote <?= !$reserva["atualizadoEm"] ? "mb-3" : "mb-0" ?>">
-                <p>
-                  <i class="ri-user-4-line"></i>
-                  <?= $reserva["username"] ?>
-                </p>
-                <footer class="blockquote-footer <?= !$reserva["atualizadoEm"] ? "text-dark" : "text-gray" ?>">
-                  <i class="ri-door-open-line"></i>
-                  <?= $reserva["roomname"] ?> -
-                  <i class="ri-time-line"></i>
-                  <?= $reserva["periodo"] ?>
-                </footer>
-              </blockquote>
-
-              <?php if (!$reserva["atualizadoEm"]): ?>
-                <a href="?action=confirmar&method=confirm&reserva=<?= $reserva["idreserva"] ?>"
-                  class="btn btn-warning p-1">Concluir</a>
-              <?php endif ?>
-            </div>
-          </div>
-        </div>
-      <?php endwhile ?>
+      <?php $itemCount = 0; ?>
+      <div class="accordion accordion-flush" id="accordion-reserva">
+        <?php while ($reserva = $stmt->fetch(PDO::FETCH_ASSOC)): ?>
+          <?php include "item_reservas.php" ?>
+        <?php endwhile ?>
+      </div>
     <?php else: ?>
       <div class="mb-3 border rounded p-3 mt-5">
         <h1>Nenhuma reserva foi criada</h1>

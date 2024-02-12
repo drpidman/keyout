@@ -1,3 +1,6 @@
+<?php include "footer/popup_newrecurso.php" ?>
+<?php include "footer/popup_reportproblem.php" ?>
+
 <footer class="mt-5 border-top">
     <div class="container mt-5 mb-5">
         <div class="row">
@@ -10,7 +13,22 @@
                     </p>
                 </div>
             </div>
-            <div class="col-xl-4 col-lg-4 col-md-6">
+            <div class="col-xl-2 offset-xl-1 col-lg-2 col-md-6">
+                <div class="">
+                    <h4>Sistema</h4>
+                    <ul class="list-unstyled">
+                        <li>
+                            <a type="button" class="text-decoration-none" data-bs-toggle="modal"
+                                data-bs-target="#modal-reportar-problema">
+                                Reportar um problema
+                            </a>
+                        </li>
+                        <li>
+                            <a type="button" class="text-decoration-none" data-bs-toggle="modal"
+                                data-bs-target="#modal-novo-recurso">Sugerir novo recurso</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
             <div class="d-flex justify-content-center">
                 <div class="copyright border-top border-bottom p-0">

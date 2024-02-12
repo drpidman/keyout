@@ -1,43 +1,49 @@
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-  Launch demo modal
-</button>
-
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-
-<form>
-  <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">Email address</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-  </div>
-  <div class="mb-3">
-    <label for="exampleInputPassword1" class="form-label">Password</label>
-    <input type="password" class="form-control" id="exampleInputPassword1">
-  </div>
-  <div class="mb-3 form-check">
-    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-    <label class="form-check-label" for="exampleCheck1">Check me out</label>
-  </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
-</form>
+<?php $itemCount += 1 ?>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button
+                class="accordion-button collapsed <?= !$reserva["atualizadoEm"] ? "bg-warning" : "bg-primary bg-opacity-10" ?>"
+                type="button" data-bs-toggle="collapse" data-bs-target="#flush-<?= $reserva["idreserva"] ?>"
+                aria-expanded="false" aria-controls="flush-<?= $reserva["idreserva"] ?>">
+                Reserva nº
+                <?= $reserva["idreserva"] ?> |
+                <?= $reserva["atualizadoEm"] ?
+                  date("d/m H:i", strtotime($reserva["atualizadoEm"]))
+                  : date("d/m H:i", strtotime($reserva["criadoEm"]))
+                  ?>
+              </button>
+            </h2>
+            <div id="flush-<?= $reserva["idreserva"] ?>"
+              class="accordion-collapse collapse  border-bottom border-start border-end">
+              <div class="d-flex flex-column accordion-body" data-bs-parent="#accordion-reserva">
+                <h4 class="m-0">
+                  <i class="ri-user-4-line"></i>
+                  <?= $reserva["username"] ?>
+                </h4>
+                <span class="text-muted">
+                  <i class="ri-door-open-line"></i>
+                  <?= $reserva["roomname"] ?> |
+                  <?php
+                  switch ($reserva["periodo"]):
+                    case "Manhã":
+                      echo "<i class='ri-sun-line'></i> " . $reserva["periodo"];
+                      break;
+                    case "Tarde":
+                      echo "<i class='ri-sun-foggy-line'></i> " . $reserva["periodo"];
+                      break;
+                    case "Noite":
+                      echo "<i class='ri-moon-line'></i> " . $reserva["periodo"];
+                      break;
+                  endswitch ?>
+                </span>
+                <span class="text-muted">
+                  <i class="ri-key-line"></i>
+                  <?= date("d/m H:i", strtotime($reserva["criadoEm"])) ?>
+                </span>
+                <span class="text-muted">
+                  <i class="ri-corner-down-right-line"></i>
+                  <?= !$reserva["atualizadoEm"] ? "Pendente" : date("d/m H:i", strtotime($reserva["atualizadoEm"])) ?>
+                </span>
+              </div>
+            </div>
+          </div>
