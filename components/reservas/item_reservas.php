@@ -19,6 +19,7 @@
                 <i class="ri-user-4-line"></i>
                 <?= $reserva["username"] ?>
             </h4>
+            <hr>
             <span class="text-muted">
                 <i class="ri-door-open-line"></i>
                 <?= $reserva["roomname"] ?> |

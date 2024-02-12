@@ -2,10 +2,11 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Sugerir recurso</h1>
+                <h1 class="modal-title fs-5" id="exampleModalLabel"><i class="ri-puzzle-line"></i> Sugerir recurso</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form class="modal-body" method="POST" action="<?= baseRedirect("sistema/actions.php?action=sugestion_new") ?>">
+            <form class="modal-body" method="POST"
+                action="<?= baseRedirect("sistema/actions.php?action=sugestion_new") ?>">
                 <div class="mb-3">
                     <label for="username" class="form-label">Seu nome</label>
                     <input type="text" class="form-control" id="username" name="username" aria-describedby="nomehelp"

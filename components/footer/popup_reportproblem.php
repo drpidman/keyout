@@ -3,7 +3,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Reportar problema</h1>
+                <h1 class="modal-title fs-5" id="exampleModalLabel"><i class="ri-bug-line"></i> Reportar problema</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <form class="modal-body" method="POST"

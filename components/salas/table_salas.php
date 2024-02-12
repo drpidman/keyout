@@ -9,7 +9,7 @@ $stmt->execute();
       Nova Sala
     </a>
   </div>
-  <h1><i class="ri-home-line"></i> Salas</h1>
+  <h1><i class="ri-door-open-line"></i> Salas</h1>
   <?php
   if ($stmt->rowCount()):
     ?>

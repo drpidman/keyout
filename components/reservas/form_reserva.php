@@ -14,12 +14,11 @@ if (isset($_GET["sala"])) {
 <section class="container mt-5">
   <div class="mb-3">
     <a href="
-    <?php if ($sala_from_home) : ?>
+    <?php if ($sala_from_home): ?>
       <?= baseRedirect("") ?>
-    <?php else : ?>
+    <?php else: ?>
       <?= baseRedirect("reservas") ?>
-    <?php endif; ?>"
-    class="btn btn-primary">
+    <?php endif; ?>" class="btn btn-primary">
       <i class="ri-arrow-left-wide-line"></i>
       Voltar
     </a>
@@ -36,39 +35,42 @@ if (isset($_GET["sala"])) {
       <section class="row flex-wrap mb-3">
         <!-- DIV INPUT N.REGISTRO  -->
         <div class="col-sm-5">
-          <label class="form-label">N. de Registro <span class="text-danger">*</span></label>
-          <input type="text" class="form-control" id="input_nregistro" aria-describedby="nregistro_help" name="nregistro" required>
+          <label class="form-label"><i class="ri-passport-line"></i> N. de Registro <span
+              class="text-danger">*</span></label>
+          <input type="text" class="form-control" id="input_nregistro" aria-describedby="nregistro_help"
+            name="nregistro" required>
           <div id="nregistro_help" class="form-text">N. de Registro para indenticação</div>
         </div>
         <!-- END DIV INPUT N.REGISTRO -->
         <!-- DIV SELECT SALAS -->
         <div class="col-sm-5 col-md-3">
-          <label class="form-label">Salas <span class="text-danger">*</span></label>
-          <select class="form-select" aria-label="Seletor de salas" aria-describedby="select_salas_help" name="select_sala" required>
-            <option 
-            <?php if (!$sala_from_home) echo "selected"; ?> value="0">Nenhuma sala selecionada</option>
+          <label class="form-label"><i class="ri-door-open-line"></i> Salas <span class="text-danger">*</span></label>
+          <select class="form-select" aria-label="Seletor de salas" aria-describedby="select_salas_help"
+            name="select_sala" required>
+            <option <?php if (!$sala_from_home)
+              echo "selected"; ?> value="0">Nenhuma sala selecionada</option>
             <?php
             # seleção de salas disponiveis para reserva
-            while ($usuario = $query_salas->fetch(PDO::FETCH_ASSOC)) : ?>
-              <option value="<?php echo $usuario["idsala"] ?>"
-              <?php
-              # verificar se a sala foi selecionada pela pagina "home", se sim, selecionar a opção marcada
-              # caso não, apenas deixar como seleção padrão "Nenhuma sala foi selecionada"
-              if ($sala_from_home && $usuario["idsala"] == $sala_from_home["idsala"]) echo "selected"; ?>
-              >
-              <?php echo $usuario["nome"]?>
+            while ($usuario = $query_salas->fetch(PDO::FETCH_ASSOC)): ?>
+              <option value="<?php echo $usuario["idsala"] ?>" <?php
+                 # verificar se a sala foi selecionada pela pagina "home", se sim, selecionar a opção marcada
+                 # caso não, apenas deixar como seleção padrão "Nenhuma sala foi selecionada"
+                 if ($sala_from_home && $usuario["idsala"] == $sala_from_home["idsala"])
+                   echo "selected"; ?>>
+                <?php echo $usuario["nome"] ?>
               </option>
             <?php endwhile ?>
           </select>
-          <div id="select_salas_help" class="form-text">Selecione uma sala para reservar. <br> Apenas salas não reservadas são mostradas</div>
+          <div id="select_salas_help" class="form-text">Selecione uma sala para reservar. <br> Apenas salas não
+            reservadas são mostradas</div>
         </div>
         <!-- END DIV SELECT SALAS -->
       </section>
-      <?php if (isset($_GET["erro"]) && $_GET["erro"] == "empty_periodo" || isset($_GET["erro"]) && $_GET["erro"] == "empty_sala") : ?>
+      <?php if (isset($_GET["erro"]) && $_GET["erro"] == "empty_periodo" || isset($_GET["erro"]) && $_GET["erro"] == "empty_sala"): ?>
         <span class="text-danger">Por favor, preencha todos os campos necessários</span>
       <?php endif ?>
     </div>
-    <button type="submit" class="btn btn-primary">Reservar</button>
+    <button type="submit" class="btn btn-primary"><i class="ri-checkbox-circle-line"></i> Reservar</button>
   </form>
   <!-- FORM END -->
 </section>
