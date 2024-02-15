@@ -15,11 +15,16 @@ include "utils.php";
 <body>
     <?php include_once "components/menu.php"; ?>
 
-    <?php if (isset($_GET["action"]) && $_GET["action"] == "confirm") { include_once "./components/home/popup_confirmar.php"; } ?>
+    <?php if (isset($_GET["action"]) && $_GET["action"] == "confirm") {
+        include_once "./components/home/popup_confirmar.php";
+    } ?>
 
     <div class="container">
         <?php include_once "./components/home/table_home.php" ?>
     </div>
+
+    <?php include_once "./components/footer.php" ?>
     <script src="./assets/js/bootstrap.bundle.min.js"></script>
 </body>
-</html> 
+
+</html>

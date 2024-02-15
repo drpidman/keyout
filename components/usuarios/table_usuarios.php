@@ -6,7 +6,7 @@ $stmt_usuarios->execute();
   <div class="mb-3">
     <a href="?novo-usuario=new" class="btn btn-primary">
       <i class="ri-add-fill"></i>
-      Novo Usuario
+      Novo Usuário
     </a>
   </div>
   <h1> <i class="ri-user-line"></i> Usuários</h1>
@@ -38,7 +38,7 @@ $stmt_usuarios->execute();
   <?php else: ?>
     <div class="mb-3 border rounded p-3">
       <h1>Nenhum usuário foi adicionado</h1>
-      <p class="text-gray">Para poder visualizar os usuários, por favor, adicione-o clicando no botão "+ Novo usuario" ou
+      <p class="text-gray">Para poder visualizar os usuários, por favor, adicione-o clicando no botão "+ Novo usuário" ou
         clique aqui:
         <a href="?novo-usuario=new">
           <i class="ri-add-fill"></i>

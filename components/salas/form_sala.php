@@ -51,7 +51,7 @@ if ($_GET['nova-sala'] == "edit") {
           id="sala-input"
           aria-describedby="sala_help" required>
 
-          <div id="sala_help" class="form-text">Um nome para indentificar a sala</div>
+          <div id="sala_help" class="form-text">Um nome para identificar a sala</div>
         </div>
       </section>
     </div>

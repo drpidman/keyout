@@ -84,7 +84,7 @@ $stmt->execute();
           action="<?= baseRedirect("reservas?limit=" . $renderPages) ?><?= isset($_GET["search"]) ? "&search=" . $_GET["search"] : "" ?>">
           <button class="btn btn-primary">carregar mais</button>
         </form>
-      <?php else: ?>
+      <?php elseif (isset($_GET["limit"])): ?>
         <a href="<?= baseRedirect("reservas") ?>" class="btn btn-primary">Voltar</a>
       <?php endif ?>
     <?php else: ?>
